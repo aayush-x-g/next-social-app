@@ -24,21 +24,20 @@ const FriendRequests = () => {
           <span className="font-semibold">Arthur Morgan</span>
         </div>
         <div className="flex gap-3 justify-end">
-        <Image
+          <Image
             src="/accept.png"
             alt=""
             width={20}
             height={20}
             className="cursor-pointer"
           />
-        <Image
+          <Image
             src="/reject.png"
             alt=""
             width={20}
             height={20}
             className="cursor-pointer"
           />
-
         </div>
       </div>
       <div className="flex justify-between items-center">
@@ -53,21 +52,20 @@ const FriendRequests = () => {
           <span className="font-semibold">Arthur Morgan</span>
         </div>
         <div className="flex gap-3 justify-end">
-        <Image
+          <Image
             src="/accept.png"
             alt=""
             width={20}
             height={20}
             className="cursor-pointer"
           />
-        <Image
+          <Image
             src="/reject.png"
             alt=""
             width={20}
             height={20}
             className="cursor-pointer"
           />
-
         </div>
       </div>
       <div className="flex justify-between items-center">
@@ -82,21 +80,20 @@ const FriendRequests = () => {
           <span className="font-semibold">Arthur Morgan</span>
         </div>
         <div className="flex gap-3 justify-end">
-        <Image
+          <Image
             src="/accept.png"
             alt=""
             width={20}
             height={20}
             className="cursor-pointer"
           />
-        <Image
+          <Image
             src="/reject.png"
             alt=""
             width={20}
             height={20}
             className="cursor-pointer"
           />
-
         </div>
       </div>
     </div>
