@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                     String          @id
+  username               String          @unique
+  avatars                String?
+  cover                  String?
+  name                   String?
+  surname                String?
+  description            String?
+  city                   String?
+  school                 String?
+  work                   String?
+  website                String?
+  createdAt              DateTime        @default(now())
+  posts                  Post[]
+  likes                  Like[]
+  comment                Comment[]
+  followers              Follower[]      @relation("UserFollowers")
+  followings             Follower[]      @relation("UserFollowings")
+  followRequestsSent     FollowRequest[] @relation("FollowRequestsSent")
+  followRequestsRecieved FollowRequest[] @relation("FollowRequestsRecieved")
+  blocks                 Block[]         @relation("BlocksSent")
+  blockedBy              Block[]         @relation("BlocksRecieved")
+  stories                Story[]
+}
+
+model Post {
+  id          Int       @id @default(autoincrement())
+  description String
+  img String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  likes       Like[]
+  Comment     Comment[]
+}
+
+model Comment {
+  id          Int      @id @default(autoincrement())
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId      Int
+  likes       Like[]
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  post      Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    Int?
+  Comment   Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  commentId Int?
+}
+
+model Follower {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  follower    User     @relation("UserFollowers", fields: [followerId], references: [id], onDelete: Cascade)
+  followerId  String
+  following   User     @relation("UserFollowings", fields: [followingId], references: [id], onDelete: Cascade)
+  followingId String
+}
+
+model FollowRequest {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  sender     User     @relation("FollowRequestsSent", fields: [senderId], references: [id], onDelete: Cascade)
+  senderId   String
+  reciever   User     @relation("FollowRequestsRecieved", fields: [recieverId], references: [id], onDelete: Cascade)
+  recieverId String
+
+  @@unique([senderId, recieverId])
+}
+
+model Block {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  blocker   User     @relation("BlocksSent", fields: [blockerId], references: [id], onDelete: Cascade)
+  blockerId String
+  blocked   User     @relation("BlocksRecieved", fields: [blockedId], references: [id], onDelete: Cascade)
+  blockedId String
+
+  @@unique([blockerId, blockedId])
+}
+
+model Story {
+  id        Int      @id @default(autoincrement())
+  img       String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String   @unique
+}

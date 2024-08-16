@@ -45,7 +45,7 @@ const LeftMenu = ({ type }: { type: "home" | "profile" }) => {
           className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100"
         >
           <Image src="/albums.png" alt="" width={20} height={20} />
-          <span>Albuns</span>
+          <span>Albums</span>
         </Link>
         <hr className="border-t-1 border-gray-50 w-36 self-center" />
         <Link
@@ -76,7 +76,7 @@ const LeftMenu = ({ type }: { type: "home" | "profile" }) => {
           href="/"
           className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100"
         >
-          <Image src="/links.png" alt="" width={20} height={20} />
+          <Image src="/link.png" alt="" width={20} height={20} />
           <span>Links</span>
         </Link>
         <hr className="border-t-1 border-gray-50 w-36 self-center" />
