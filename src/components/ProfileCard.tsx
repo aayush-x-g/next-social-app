@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const ProfileCard = () => {
+const ProfileCard = async () => {
   return (
     <div className="p-4 bg-white rounded-lg shadow-md text-sm flex flex-col gap-6">
       <div className="h-20 relative">
@@ -46,7 +46,9 @@ const ProfileCard = () => {
           </div>
           <span className="text-xs text-gray-400">500 Followers</span>
         </div>
-        <button className="bg-blue-500 text-white text-xs p-2 rounded-md">My Profile</button>
+        <button className="bg-blue-500 text-white text-xs p-2 rounded-md">
+          My Profile
+        </button>
       </div>
     </div>
   );
