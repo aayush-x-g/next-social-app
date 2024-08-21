@@ -18,7 +18,7 @@ const Navbar = () => {
           ChatterBox
         </Link>
       </div>
-      {/* CENTER */}
+      {/* MIDDLE */}
       <div className="hidden md:flex w-[50%] text-sm items-center justify-between">
         {/* LINKS */}
         <div className="flex gap-6 text-gray-700">
